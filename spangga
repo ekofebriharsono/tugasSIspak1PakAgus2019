@@ -1,0 +1,22 @@
+CREATE PROCEDURE GetCustomerLevel(
+    IN  toeflin VARCHAR(20), 
+    IN ipkin  VARCHAR(20),
+	IN poin VARCHAR(20))
+BEGIN
+ 
+    IF (@toeflin = 'rendah') then SELECT * from toefl where rendah != 0;
+    ELSEIF (@toeflin = 'menengah') then SELECT * from toefl where menengah != 0;
+    ELSEIF (@toeflin = 'tinggi') then SELECT * from toefl where tinggi != 0;
+    END IF;
+    
+    IF (@ipkin = 'rendah') then SELECT * from ipk where jelek != 0;
+    ELSEIF (@ipkin = 'menengah') then SELECT * from ipk where cukup != 0;
+    ELSEIF (@ipkin = 'tinggi') then SELECT * from ipk where bagus != 0;
+    END IF;
+    
+    IF (@poin = 'rendah') then SELECT * from pendapatan_ortu where sedikit != 0;
+    ELSEIF (@poin = 'menengah') then SELECT * from pendapatan_ortu where sedang != 0;
+    ELSEIF (@poin = 'tinggi') then SELECT * from pendapatan_ortu where banyak != 0;
+    END IF;
+    
+END
